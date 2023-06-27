@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-storeit-dev-223349-authRole",
+      "UnauthRoleArn": "arn:aws:iam::895656015678:role/amplify-storeit-dev-223349-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::895656015678:role/amplify-storeit-dev-223349-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-storeit-dev-223349-deployment",
+      "UnauthRoleName": "amplify-storeit-dev-223349-unauthRole",
+      "StackName": "amplify-storeit-dev-223349",
+      "StackId": "arn:aws:cloudformation:us-east-1:895656015678:stack/amplify-storeit-dev-223349/9974bee0-150c-11ee-96a0-12daef162629",
+      "AmplifyAppId": "d1s4hm8x2dsue4"
+    },
+    "categories": {
+      "auth": {
+        "storeitfed65805": {}
+      },
+      "storage": {
+        "storeitkvs": {}
+      }
+    }
+  }
+}
