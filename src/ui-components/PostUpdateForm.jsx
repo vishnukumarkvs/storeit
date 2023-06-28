@@ -195,9 +195,11 @@ export default function PostUpdateForm(props) {
   const initialValues = {
     note: "",
     files: [],
+    username: "",
   };
   const [note, setNote] = React.useState(initialValues.note);
   const [files, setFiles] = React.useState(initialValues.files);
+  const [username, setUsername] = React.useState(initialValues.username);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = postRecord
@@ -206,6 +208,7 @@ export default function PostUpdateForm(props) {
     setNote(cleanValues.note);
     setFiles(cleanValues.files ?? []);
     setCurrentFilesValue("");
+    setUsername(cleanValues.username);
     setErrors({});
   };
   const [postRecord, setPostRecord] = React.useState(postModelProp);
@@ -224,6 +227,7 @@ export default function PostUpdateForm(props) {
   const validations = {
     note: [],
     files: [],
+    username: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -253,6 +257,7 @@ export default function PostUpdateForm(props) {
         let modelFields = {
           note,
           files,
+          username,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -310,6 +315,7 @@ export default function PostUpdateForm(props) {
             const modelFields = {
               note: value,
               files,
+              username,
             };
             const result = onChange(modelFields);
             value = result?.note ?? value;
@@ -331,6 +337,7 @@ export default function PostUpdateForm(props) {
             const modelFields = {
               note,
               files: values,
+              username,
             };
             const result = onChange(modelFields);
             values = result?.files ?? values;
@@ -367,6 +374,32 @@ export default function PostUpdateForm(props) {
           {...getOverrideProps(overrides, "files")}
         ></TextField>
       </ArrayField>
+      <TextField
+        label="Username"
+        isRequired={false}
+        isReadOnly={false}
+        value={username}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              note,
+              files,
+              username: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.username ?? value;
+          }
+          if (errors.username?.hasError) {
+            runValidationTasks("username", value);
+          }
+          setUsername(value);
+        }}
+        onBlur={() => runValidationTasks("username", username)}
+        errorMessage={errors.username?.errorMessage}
+        hasError={errors.username?.hasError}
+        {...getOverrideProps(overrides, "username")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

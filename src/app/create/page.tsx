@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   TextField,
+  useAuthenticator,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
 import { StorageManager } from "@aws-amplify/ui-react-storage";
@@ -13,6 +14,7 @@ import { Post } from "../../models";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const { user } = useAuthenticator();
   const router = useRouter();
   const [note, setNote] = useState("");
   const [files, setFiles] = useState([]);
@@ -23,9 +25,10 @@ const Page = () => {
       new Post({
         note,
         files: Object.keys(files),
+        username: user.username,
       })
     ).then(() => {
-      router.push("/");
+      router.push("/view");
     });
   };
   return (
@@ -48,6 +51,7 @@ const Page = () => {
               "application/*",
             ]}
             maxFileCount={5}
+            path={`${user.username}/`}
             onUploadSuccess={({ key = "" }) => {
               setFiles((prevFiles) => {
                 return { ...prevFiles, [key]: true };

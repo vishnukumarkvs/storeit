@@ -29,6 +29,7 @@ const Navbar = () => {
                 onClick={() => {
                   signOut();
                   router.push("/");
+                  router.refresh();
                 }}
               >
                 Sign Out

@@ -2,5 +2,5 @@ type Post @model @auth(rules: [{allow: public}]) {
   id: ID!
   note: String
   files: [String]
-}
- 
+  username: String
+} 

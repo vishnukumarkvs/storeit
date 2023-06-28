@@ -16,16 +16,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type PostUpdateFormInputValues = {
     note?: string;
     files?: string[];
+    username?: string;
 };
 export declare type PostUpdateFormValidationValues = {
     note?: ValidationFunction<string>;
     files?: ValidationFunction<string>;
+    username?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PostUpdateFormOverridesProps = {
     PostUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     note?: PrimitiveOverrideProps<TextFieldProps>;
     files?: PrimitiveOverrideProps<TextFieldProps>;
+    username?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type PostUpdateFormProps = React.PropsWithChildren<{
     overrides?: PostUpdateFormOverridesProps | undefined | null;

@@ -25,6 +25,13 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
+                "username": {
+                    "name": "username",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -71,5 +78,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "314ba66d287d538f1bdae8384ec2d6a9"
+    "version": "998d51605bb5688467743d85e6129e3a"
 };
