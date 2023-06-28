@@ -28,8 +28,10 @@ create data model
 
 - Post
   - id
-  - body
-  - images - is array
+  - note
+  - files - is array of strng
     all are type string
     save and deploy
     - creates appsync with dynamodb
+
+amplify pull <or check console for exact command with appId>
