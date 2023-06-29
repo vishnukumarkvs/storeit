@@ -47,12 +47,19 @@ const Page = () => {
     const { note, files } = post;
     const searchTextLowerCase = searchText.toLowerCase();
 
-    return (
-      note.toLowerCase().includes(searchTextLowerCase) ||
-      files?.some((fileKey) =>
-        fileKey.toLowerCase().includes(searchTextLowerCase)
-      )
-    );
+    if (note && note.toLowerCase().includes(searchTextLowerCase)) {
+      return true;
+    }
+
+    if (files) {
+      const hasMatchingFile = files.some(
+        (fileKey) =>
+          fileKey && fileKey.toLowerCase().includes(searchTextLowerCase)
+      );
+      return hasMatchingFile;
+    }
+
+    return false;
   };
 
   const filteredPosts = posts.filter(filterPosts);
@@ -77,20 +84,24 @@ const Page = () => {
               <ul className="list-disc list-inside">
                 {post.files && post.files.length > 0 ? (
                   <ul className="list-disc list-inside">
-                    {post.files.map((fileKey, index) => {
-                      const fileName = fileKey.split("/")[1]; // Get the part of the file name after '/'
-                      return (
-                        <li key={index} className="text-gray-600">
-                          <a
-                            href="#"
-                            className="text-blue-500 underline"
-                            onClick={() => handleDownload(fileKey)}
-                          >
-                            {fileName}
-                          </a>
-                        </li>
-                      );
-                    })}
+                    {post.files &&
+                      post.files.map((fileKey, index) => {
+                        if (fileKey) {
+                          const fileName = fileKey.split("/")[1]; // Get the part of the file name after '/'
+                          return (
+                            <li key={index} className="text-gray-600">
+                              <a
+                                href="#"
+                                className="text-blue-500 underline"
+                                onClick={() => handleDownload(fileKey)}
+                              >
+                                {fileName}
+                              </a>
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
                   </ul>
                 ) : (
                   <p className="text-gray-600">
