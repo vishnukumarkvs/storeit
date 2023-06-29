@@ -25,7 +25,7 @@ const Page = () => {
       console.log(items);
     });
     return () => getPosts.unsubscribe();
-  }, []);
+  }, [username]);
 
   const handleDownload = async (fileKey: any) => {
     try {
@@ -94,7 +94,7 @@ const Page = () => {
                   </ul>
                 ) : (
                   <p className="text-gray-600">
-                    You haven't uploaded anything yet.
+                    You havent uploaded anything yet.
                   </p>
                 )}
               </ul>
