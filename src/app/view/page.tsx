@@ -1,7 +1,8 @@
 "use client";
 
+import "@aws-amplify/ui-react/styles.css";
 import { Post } from "@/models";
-import { DataStore, Predicates, Storage } from "aws-amplify";
+import { DataStore, Storage } from "aws-amplify";
 import { useAuthenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import { useEffect, useState } from "react";
 
