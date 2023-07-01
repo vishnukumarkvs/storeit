@@ -7,7 +7,6 @@ import {
   useAuthenticator,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
 
 import { StorageManager } from "@aws-amplify/ui-react-storage";
 import { useState } from "react";
