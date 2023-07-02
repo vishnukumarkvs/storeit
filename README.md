@@ -1,37 +1,33 @@
-npm install -g @aws-amplify/cli -> one time to install amplify cli globally
+# Storeit
 
-npm add @aws-amplify/ui-react @aws-amplify/ui-react-storage aws-amplify
+A simple cloud storage app where users can upload any file and can search for it instantly.
 
-amplify init
+URL - https://storeit.vishnukvs.xyz/
 
-amplify console -> to get aws console
+![Homepage](https://github.com/vishnukumarkvs/storeit/assets/116954249/aa1c6ba3-aa88-416c-aa3e-8c1c21f8ca26)
 
-amplify add storage
 
-options
+## Tech Stack
 
-- content - images, videos, files etc
-- add cognito auth
-- default
-- email only
-- auth and guest users
-- create, update and delete
-- no lambda trigger needed
+-  AWS Ampliy [Inbuitl - Cognito for Auth, S3 for storage, DynamoDB and AppSync for data model]
+-  Nextjs
+-  Tailwindcss
 
-amplify push
+## About
 
-https://youtu.be/mRUPnke5zNg
+- Built the app using Nextjs and AWS Amplify
+- Used amplify auth which uses cognito in backend
+- Used amplify storage for content which uses S3 in backend
+- Created a data model inside Amplify Studio.
+```
+Data Model
 
-enable amplify studio
-
-create data model
-
-- Post
-  - id
-  - note
-  - files - is array of strng
-    all are type string
-    save and deploy
-    - creates appsync with dynamodb
-
-amplify pull <or check console for exact command with appId>
+Post
+- id
+- note
+- files
+- username
+```
+- Datamodel uses Dynamodb as database and AWS AppSync for graphql query capability
+- Used DataStore and Storage to save and retrieve data from amplify backend
+- Hosted application in Aws Amplify through Github source
